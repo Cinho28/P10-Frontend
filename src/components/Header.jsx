@@ -9,6 +9,7 @@ function Header() {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const firstname = useSelector((state) => state.auth.user?.firstName);
   const lastname = useSelector((state) => state.auth.user?.lastName);
+  const username = useSelector((state) => state.auth.user?.userName);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleLogout = () => {
@@ -31,7 +32,7 @@ function Header() {
           <div className="nav-link">
             <Link className="main-nav-item" to="/user">
               <i className="fa fa-user-circle"></i>
-              {firstname} {lastname}
+              {username || `${firstname} ${lastname}`}
             </Link>
             <button className="main-nav-item" onClick={handleLogout}>
               <i className="fa fa-sign-out"></i>

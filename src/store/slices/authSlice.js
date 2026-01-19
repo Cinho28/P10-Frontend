@@ -47,6 +47,22 @@ export const fetchUserProfile = createAsyncThunk(
   },
 );
 
+export const updateUserProfile = createAsyncThunk(
+  "auth/updateUserProfile",
+  async ({ token, userName }) => {
+    const response = await axios.put(
+      "http://localhost:3001/api/v1/user/profile",
+      { userName },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    );
+    return response.data.body;
+  },
+);
+
 const authSlice = createSlice({
   name: "auth",
   initialState,
@@ -66,6 +82,11 @@ const authSlice = createSlice({
     });
     builder.addCase(fetchUserProfile.fulfilled, (state, action) => {
       state.user = action.payload;
+    });
+    builder.addCase(updateUserProfile.fulfilled, (state, action) => {
+      if (state.user) {
+        state.user.userName = action.payload.userName;
+      }
     });
   },
 });
