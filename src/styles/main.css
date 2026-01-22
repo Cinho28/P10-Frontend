@@ -291,16 +291,21 @@ main {
 }
 .input-wrapper {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 1rem;
+  flex-direction: column;
+  text-align: left;
+  margin-bottom: 1rem;
 }
 
 .header {
   color: #fff;
   margin-bottom: 2rem;
 }
-
+.error-message {
+  color: red;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
 .transaction-button {
   display: block;
   width: 100%;

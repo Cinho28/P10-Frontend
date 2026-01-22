@@ -10,13 +10,15 @@ function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [rememberMe, setRememberMe] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrorMessage("");
     try {
       await dispatch(login({ email, password, rememberMe })).unwrap();
       navigate("/user");
-    } catch (err) {
-      console.error("Failed to login: ", err);
+    } catch {
+      setErrorMessage("Identifiant ou mot de passe incorrect");
     }
   };
 
@@ -25,6 +27,7 @@ function Login() {
       <section className="sign-in-content">
         <i className="fa fa-user-circle sign-in-icon"></i>
         <h1>Sign In</h1>
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
         <form onSubmit={handleSubmit}>
           <div className="input-wrapper">
             <label htmlFor="username">Username</label>
@@ -32,7 +35,10 @@ function Login() {
               type="text"
               id="username"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => {
+                setEmail(e.target.value);
+                setErrorMessage("");
+              }}
             />
           </div>
           <div className="input-wrapper">
@@ -41,7 +47,10 @@ function Login() {
               type="password"
               id="password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => {
+                setPassword(e.target.value);
+                setErrorMessage("");
+              }}
             />
           </div>
           <div className="input-remember">
