@@ -11,7 +11,7 @@ node_modules
 dist
 dist-ssr
 *.local
-soutenance.md
+PRESENTATION_NOTES.md
 
 # Editor directories and files
 .vscode/*
