@@ -30,7 +30,7 @@ function Header() {
       <div>
         {isAuthenticated ? (
           <div className="nav-link">
-            <Link className="main-nav-item" to="/user">
+            <Link className="main-nav-item" to="/Profile">
               <i className="fa fa-user-circle"></i>
               {username || `${firstname} ${lastname}`}
             </Link>

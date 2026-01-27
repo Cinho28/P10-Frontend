@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import User from "./pages/User";
+import Profile from "./pages/Profile";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { useSelector, useDispatch } from "react-redux";
@@ -28,8 +28,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route
-          path="/user"
-          element={isAuthenticated ? <User /> : <Navigate to="/login" />}
+          path="/Profile"
+          element={isAuthenticated ? <Profile /> : <Navigate to="/login" />}
         />
       </Routes>
       <Footer />

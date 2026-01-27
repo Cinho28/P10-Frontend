@@ -16,7 +16,7 @@ function Login() {
     setErrorMessage("");
     try {
       await dispatch(login({ email, password, rememberMe })).unwrap();
-      navigate("/user");
+      navigate("/Profile");
     } catch {
       setErrorMessage("Identifiant ou mot de passe incorrect");
     }

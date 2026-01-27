@@ -51,7 +51,7 @@ export const updateUserProfile = createAsyncThunk(
   "auth/updateUserProfile",
   async ({ token, userName }) => {
     const response = await axios.put(
-      "http://localhost:3001/api/v1/user/profile",
+      "http://localhost:3001/api/v1/user/profile/username",
       { userName },
       {
         headers: {
