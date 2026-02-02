@@ -28,8 +28,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route
-          path="/Profile"
-          element={isAuthenticated ? <Profile /> : <Navigate to="/login" />}
+          path="/profile"
+          element={isAuthenticated ? <Profile /> : <Navigate to="/" />}
         />
       </Routes>
       <Footer />
